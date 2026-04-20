@@ -21,7 +21,7 @@ export const business = {
     saturday: "09:00 – 13:00",
     sunday: "Closed",
   },
-  logo: "/logo.png",
+  logo: "/logo.svg",
   mapQuery: "Mount+Pleasant+Business+Park+Harare+Zimbabwe",
 };
 

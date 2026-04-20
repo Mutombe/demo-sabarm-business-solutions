@@ -58,7 +58,7 @@ export default function Navbar() {
               alt={business.name}
               className="h-10 w-10 shrink-0"
               loading="eager"
-            />
+             onError={e => { e.currentTarget.style.display = 'none'; }} />
             <div className="min-w-0">
               <div className="font-display text-[19px] sm:text-[21px] leading-none tracking-tight text-teal-700 truncate">
                 {business.shortName}
