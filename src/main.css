@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand — deep teal, a precise professional anchor */
+  --color-teal-50: #EEF5F4;
+  --color-teal-100: #D7E8E6;
+  --color-teal-200: #AFD1CE;
+  --color-teal-300: #7FB3AF;
+  --color-teal-400: #4E938E;
+  --color-teal-500: #2A6F6B;
+  --color-teal-600: #0E4D4A;
+  --color-teal-700: #0B3E3B;
+  --color-teal-800: #082E2C;
+  --color-teal-900: #051F1D;
+
+  /* Ivory — paper-warm neutral */
+  --color-ivory-50: #FBF8F2;
+  --color-ivory-100: #F6F1E7;
+  --color-ivory-200: #EDE5D2;
+  --color-ivory-300: #DCD2BA;
+
+  /* Warm grey — type + lines */
+  --color-stone-50: #F7F6F3;
+  --color-stone-100: #ECEAE4;
+  --color-stone-200: #D4D0C5;
+  --color-stone-300: #B4AE9F;
+  --color-stone-400: #8C8676;
+  --color-stone-500: #6A6558;
+  --color-stone-600: #4E4A40;
+  --color-stone-700: #35322B;
+  --color-stone-800: #22201C;
+  --color-stone-900: #141310;
+
+  /* Copper — subtle accent, used sparingly */
+  --color-copper-300: #E4B58A;
+  --color-copper-400: #C89466;
+  --color-copper-500: #B87333;
+  --color-copper-600: #995E28;
+
+  /* Typography */
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-ivory-50);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-stone-800);
+  background: var(--color-ivory-50);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-teal-600);
+  color: var(--color-ivory-50);
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-ivory-100); }
+::-webkit-scrollbar-thumb { background: var(--color-teal-200); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-teal-500); }
+
+.font-display { font-family: var(--font-display); }
+.font-body { font-family: var(--font-body); }
+.font-mono { font-family: var(--font-mono); }
+
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }
+
+/* Paper grain — very subtle, adds tactility to professional surfaces */
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.028;
+  mix-blend-mode: multiply;
+}
+
+/* Fine grid — used on hero and section backdrops */
+.fine-grid {
+  background-image:
+    linear-gradient(to right, rgba(14, 77, 74, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 77, 74, 0.055) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* Section number badge */
+.numeral {
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  font-size: 11px;
+  color: var(--color-teal-600);
+}
+
+.rule-teal { border-color: var(--color-teal-600); }
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.35s ease;
+}
+.link-underline:hover {
+  background-size: 0% 1px;
+  background-position: 100% 100%;
+}
+
+.btn-focus:focus-visible {
+  outline: 2px solid var(--color-copper-500);
+  outline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-teal-600);
+  outline-offset: 2px;
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-ticker { animation: ticker 60s linear infinite; }
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in 0.8s ease-out both; }
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+/* Prose refinement for insights */
+.prose-sabarm p { line-height: 1.75; color: var(--color-stone-700); margin-bottom: 1.1em; }
+.prose-sabarm h3 { font-family: var(--font-display); color: var(--color-teal-700); font-size: 1.35rem; margin: 2em 0 0.6em; letter-spacing: -0.01em; }
+.prose-sabarm ul { padding-left: 1.2em; margin: 1em 0; }
+.prose-sabarm ul li { list-style: disc; margin-bottom: 0.4em; color: var(--color-stone-700); }
+
+/* Keep h1 kerning refined */
+h1, h2, h3, h4 { letter-spacing: -0.012em; }
