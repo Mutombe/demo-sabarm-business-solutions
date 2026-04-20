@@ -1,7 +1,40 @@
 import React from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
-import * as Icons from '@phosphor-icons/react';
-import { ArrowRight, CheckCircle, Phone, WhatsappLogo, CaretLeft, CaretRight } from '@phosphor-icons/react';
+import {
+  ArrowRight,
+  CheckCircle,
+  Phone,
+  WhatsappLogo,
+  CaretLeft,
+  CaretRight,
+  ShieldCheck,
+  Target,
+  Handshake,
+  Scales,
+  ClipboardText,
+  Receipt,
+  ChartLineUp,
+  BookOpen,
+  Users,
+  Vault,
+  MagnifyingGlass,
+  Briefcase,
+} from '@phosphor-icons/react';
+
+const IconMap = {
+  ShieldCheck,
+  Target,
+  Handshake,
+  Scales,
+  ClipboardText,
+  Receipt,
+  ChartLineUp,
+  BookOpen,
+  Users,
+  Vault,
+  MagnifyingGlass,
+  Briefcase,
+};
 import { services, waHref, business } from '../data/siteData';
 import SEO from '../components/SEO';
 import PageTransition from '../components/PageTransition';
@@ -13,7 +46,7 @@ export default function ServiceDetail() {
   const idx = services.findIndex((s) => s.slug === slug);
   if (idx === -1) return <Navigate to="/services" replace />;
   const service = services[idx];
-  const Icon = Icons[service.icon] || Icons.Briefcase;
+  const Icon = IconMap[service.icon] || Briefcase;
   const prev = services[(idx - 1 + services.length) % services.length];
   const next = services[(idx + 1) % services.length];
   const related = services.filter((_, i) => i !== idx).slice(0, 4);

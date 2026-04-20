@@ -1,10 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import * as Icons from '@phosphor-icons/react';
-import { ArrowUpRight } from '@phosphor-icons/react';
+import {
+  ArrowUpRight,
+  ShieldCheck,
+  Target,
+  Handshake,
+  Scales,
+  ClipboardText,
+  Receipt,
+  ChartLineUp,
+  BookOpen,
+  Users,
+  Vault,
+  MagnifyingGlass,
+  Briefcase,
+} from '@phosphor-icons/react';
+
+const IconMap = {
+  ShieldCheck,
+  Target,
+  Handshake,
+  Scales,
+  ClipboardText,
+  Receipt,
+  ChartLineUp,
+  BookOpen,
+  Users,
+  Vault,
+  MagnifyingGlass,
+  Briefcase,
+};
 
 export default function ServiceCard({ service, index }) {
-  const Icon = Icons[service.icon] || Icons.Briefcase;
+  const Icon = IconMap[service.icon] || Briefcase;
   return (
     <Link
       to={`/services/${service.slug}`}
